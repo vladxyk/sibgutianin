@@ -2,8 +2,9 @@
 
 public class hero : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 10f;
     private Rigidbody2D rigidbody;
+    bool goRight = true;       
 
     void Start()
     {
@@ -18,5 +19,16 @@ public class hero : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             rigidbody.AddForce(Vector2.up * 15000);
+
+        if (moveX > 0 && !goRight)
+            flip();
+        else if (moveX < 0 && goRight)
+            flip();
+    }
+
+    void flip()
+    {
+        goRight = !goRight;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
