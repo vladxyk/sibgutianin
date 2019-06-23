@@ -2,33 +2,64 @@
 
 public class hero : MonoBehaviour
 {
+    [Range(0, .3f)] [SerializeField] private float moveSmoothing = .05f;
     public float speed = 10f;
-    private Rigidbody2D rigidbody;
-    bool goRight = true;       
+    [SerializeField] private float jumpForce = 400f;
+    private bool onGround;
+    private Rigidbody2D _rigidbody;
+    bool goRight = true;
+
+    private bool _isJumping = false;
+    private float moveX;
+    private Vector3 zeroVelocity = Vector3.zero;
 
     void Start()
     {
-        rigidbody = GetComponent <Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        rigidbody.MovePosition(rigidbody.position + Vector2.right * moveX * speed * Time.deltaTime);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down, 2.8f);
+        onGround = false;
+        if (hit.collider != null)
+        {
+            onGround = true;
+            Debug.Log(hit.collider.ToString());
+        }
+
+        moveX = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
-            rigidbody.AddForce(Vector2.up * 15000);
-
-        if (moveX > 0 && !goRight)
-            flip();
-        else if (moveX < 0 && goRight)
-            flip();
+        {
+            _isJumping = true;
+        }
     }
 
-    void flip()
+    void FixedUpdate()
+    {
+        float move = moveX * Time.fixedDeltaTime;
+        Vector2 targetVelocity = new Vector2(move * 10f, _rigidbody.velocity.y);
+        _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, targetVelocity, ref zeroVelocity, moveSmoothing);
+        _rigidbody.MovePosition(_rigidbody.position + Vector2.right * moveX * speed * Time.deltaTime);
+
+        if (_isJumping && onGround)
+        {
+            _rigidbody.AddForce(new Vector2(0f, jumpForce));
+            _isJumping = false;
+        }
+
+        if (moveX > 0 && !goRight)
+            Flip();
+        else if (moveX < 0 && goRight)
+            Flip();
+    }
+    void Flip()
     {
         goRight = !goRight;
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
