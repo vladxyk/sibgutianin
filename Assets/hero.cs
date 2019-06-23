@@ -79,6 +79,10 @@ public class hero : MonoBehaviour
             {
                 Destroy(bonus.gameObject);
                 score++;
+                if (score == 6)
+                {
+                    Application.LoadLevel("level2");
+                }
             }
         }
     }
