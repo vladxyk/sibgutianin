@@ -13,6 +13,8 @@ public class hero : MonoBehaviour
     private float moveX;
     private Vector3 zeroVelocity = Vector3.zero;
 
+    public int score;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -61,5 +63,13 @@ public class hero : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+    void OnTriggerEnter2D(Collider2D bonus)
+    {
+        if (bonus.gameObject.tag == "bonus")
+        {
+            Destroy(bonus.gameObject);
+            score++;
+        }
     }
 }
