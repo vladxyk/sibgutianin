@@ -2,10 +2,16 @@
 
 public class camera : MonoBehaviour
 {
-    public GameObject hero;
+    public float DampTime = 0.15f;
+    public float Speed = 30.0f;
+    public Vector3 Offset;
+    public Transform Target;
 
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = new Vector3(hero.transform.position.x, hero.transform.position.y, -10f);
+        float blend = 1f - Mathf.Pow(DampTime, Time.deltaTime * Speed);
+        Vector3 desiredPosition = Target.position + Offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, blend);
+        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, -1.0f);
     }
 }
