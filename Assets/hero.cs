@@ -13,11 +13,13 @@ public class hero : MonoBehaviour
     private float moveX;
     private Vector3 zeroVelocity = Vector3.zero;
 
-    public int score;
+    private int score;
+    private BoxCollider2D _boxCollider;
 
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     
@@ -64,15 +66,22 @@ public class hero : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+    bool PlayerTouching(Collider2D other)
+    {
+        return _boxCollider.IsTouching(other);
+    }
+
     void OnTriggerEnter2D(Collider2D bonus)
     {
         if (bonus.gameObject.tag == "bonus")
         {
-            Destroy(bonus.gameObject);
-            score++;
+            if (PlayerTouching(bonus))
+            {
+                Destroy(bonus.gameObject);
+                score++;
+            }
         }
     }
-
     void OnGUI()
     {
         GUI.Box(new Rect(0, 0, 100, 100), "Score:" + score);
