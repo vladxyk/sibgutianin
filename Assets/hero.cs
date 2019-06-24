@@ -96,7 +96,7 @@ public class hero : MonoBehaviour
     }
     void OnGUI()
     {
-        GUI.Box(new Rect(0, 0, 100, 100), "Score:" + score);
+        GUI.Box(new Rect(0, 0, 100, 100), "Detail:" + score);
         if (triggered)
         {
             GUI.Box(new Rect(10, 460, 210, 22), "Hello, friend! My name is Captain.");
