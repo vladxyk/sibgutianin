@@ -71,6 +71,7 @@ public class hero : MonoBehaviour
         return _boxCollider.IsTouching(other);
     }
 
+    bool triggered;
     void OnTriggerEnter2D(Collider2D bonus)
     {
         if (bonus.gameObject.tag == "bonus")
@@ -85,9 +86,23 @@ public class hero : MonoBehaviour
                 }
             }
         }
+        if (bonus.gameObject.tag == "npc")
+        {
+            if (PlayerTouching(bonus))
+            {
+                triggered = true;
+            }
+        }
     }
     void OnGUI()
     {
         GUI.Box(new Rect(0, 0, 100, 100), "Score:" + score);
+        if (triggered)
+        {
+            GUI.Box(new Rect(10, 460, 210, 22), "Hello, friend! My name is Captain.");
+            GUI.Box(new Rect(10, 500, 310, 22), "You must find the six parts of the ship to go further");
+            GUI.Box(new Rect(10, 480, 250, 22), "Help me collect all the parts for my ship.");
+        }
+
     }
 }
