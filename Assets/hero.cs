@@ -166,13 +166,13 @@ public class hero : MonoBehaviour
     }
     void OnGUI()
     {
-        GUI.Box(new Rect(0, 0, 100, 100), "Detail:" + score);
+        GUI.Box(new Rect(500, 0, 100, 100), "Detail:" + score);
         if (triggered)
         {
-            GUI.Box(new Rect(10, 440, 210, 22), "Hello, friend! My name is Captain.");
-            GUI.Box(new Rect(10, 480, 317, 22), "You must find the six details of the ship to go further.");
-            GUI.Box(new Rect(10, 460, 245, 22), "Help me collect all the parts for my ship.");
-            GUI.Box(new Rect(10, 500, 240, 22), "As soon as you find, come back to me.");
+            GUI.Box(new Rect(10, 0, 210, 22), "Hello, friend! My name is Captain.");
+            GUI.Box(new Rect(10, 20, 317, 22), "You must find the six details of the ship to go further.");
+            GUI.Box(new Rect(10, 40, 245, 22), "Help me collect all the parts for my ship.");
+            GUI.Box(new Rect(10, 60, 240, 22), "As soon as you find, come back to me.");
         }
         if (triggered2)
         {
