@@ -72,6 +72,9 @@ public class hero : MonoBehaviour
     }
 
     bool triggered;
+    bool triggered2;
+    bool triggered3;
+    bool triggered4;
     void OnTriggerEnter2D(Collider2D bonus)
     {
         if (bonus.gameObject.tag == "bonus")
@@ -80,10 +83,10 @@ public class hero : MonoBehaviour
             {
                 Destroy(bonus.gameObject);
                 score++;
-                if (score == 6)
-                {
-                    Application.LoadLevel("level2");
-                }
+                //if (score == 6)
+                //{
+                //    Application.LoadLevel("level2");
+                //}
             }
         }
         if (bonus.gameObject.tag == "npc")
@@ -93,16 +96,103 @@ public class hero : MonoBehaviour
                 triggered = true;
             }
         }
+
+        if (bonus.gameObject.tag == "npc")
+        {
+            if (PlayerTouching(bonus))
+            {
+                if ((score == 6) && (bonus.gameObject.tag == "npc"))
+                {
+                    Application.LoadLevel("level2");
+                }
+            }
+        }
+
+        if (bonus.gameObject.tag == "npc2")
+        {
+            if (PlayerTouching(bonus))
+            {
+                triggered2 = true;
+            }
+        }
+
+        if (bonus.gameObject.tag == "npc2")
+        {
+            if (PlayerTouching(bonus))
+            {
+                if ((score == 6) && (bonus.gameObject.tag == "npc2"))
+                {
+                    Application.LoadLevel("level3");
+                }
+            }
+        }
+
+        if (bonus.gameObject.tag == "npc3")
+        {
+            if (PlayerTouching(bonus))
+            {
+                triggered3 = true;
+            }
+        }
+
+        if (bonus.gameObject.tag == "npc3")
+        {
+            if (PlayerTouching(bonus))
+            {
+                Destroy(bonus.gameObject);
+            }
+        }
+
+        if (bonus.gameObject.tag == "npc4")
+        {
+            if (PlayerTouching(bonus))
+            {
+                triggered4 = true;
+            }
+        }
+
+        if (bonus.gameObject.tag == "npc4")
+        {
+            if (PlayerTouching(bonus))
+            {
+                if ((score == 6) && (bonus.gameObject.tag == "hole"))
+                {
+                    Application.LoadLevel("level1");
+                }
+            }
+        }
+
+
     }
     void OnGUI()
     {
         GUI.Box(new Rect(0, 0, 100, 100), "Detail:" + score);
         if (triggered)
         {
-            GUI.Box(new Rect(10, 460, 210, 22), "Hello, friend! My name is Captain.");
-            GUI.Box(new Rect(10, 500, 310, 22), "You must find the six parts of the ship to go further");
-            GUI.Box(new Rect(10, 480, 250, 22), "Help me collect all the parts for my ship.");
+            GUI.Box(new Rect(10, 440, 210, 22), "Hello, friend! My name is Captain.");
+            GUI.Box(new Rect(10, 480, 317, 22), "You must find the six details of the ship to go further.");
+            GUI.Box(new Rect(10, 460, 245, 22), "Help me collect all the parts for my ship.");
+            GUI.Box(new Rect(10, 500, 240, 22), "As soon as you find, come back to me.");
         }
+        if (triggered2)
+        {
+            GUI.Box(new Rect(10, 460, 90, 22), "You did great!");
+            GUI.Box(new Rect(10, 480, 160, 22), "Now find six more details.");
+            GUI.Box(new Rect(10, 500, 240, 22), "As soon as you find, come back to me.");
+        }
+        if (triggered3)
+        {
+            GUI.Box(new Rect(10, 460, 100, 22), "We're so close!");
+            GUI.Box(new Rect(10, 480, 160, 22), "Now find six more details.");
+            GUI.Box(new Rect(10, 500, 180, 22), "I will wait for you at the ship.");
+        }
+        if (triggered4)
+        {
+            GUI.Box(new Rect(10, 380, 165, 22), "Hooray! You fixed my ship!");
+            GUI.Box(new Rect(10, 400, 100, 22), "Thanks for help!");
+            GUI.Box(new Rect(10, 420, 270, 22), "if you want to start again, jumping in the hole.");
+        }
+
 
     }
 }
