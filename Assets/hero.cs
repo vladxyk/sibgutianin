@@ -151,11 +151,11 @@ public class hero : MonoBehaviour
             }
         }
 
-        if (bonus.gameObject.tag == "npc4")
+        if (bonus.gameObject.tag == "restart")
         {
             if (PlayerTouching(bonus))
             {
-                if ((score == 6) && (bonus.gameObject.tag == "hole"))
+                if ((score == 6) && (bonus.gameObject.tag == "restart"))
                 {
                     Application.LoadLevel("level1");
                 }
@@ -176,21 +176,21 @@ public class hero : MonoBehaviour
         }
         if (triggered2)
         {
-            GUI.Box(new Rect(10, 460, 90, 22), "You did great!");
-            GUI.Box(new Rect(10, 480, 160, 22), "Now find six more details.");
-            GUI.Box(new Rect(10, 500, 240, 22), "As soon as you find, come back to me.");
+            GUI.Box(new Rect(10, 0, 90, 22), "You did great!");
+            GUI.Box(new Rect(10, 20, 160, 22), "Now find six more details.");
+            GUI.Box(new Rect(10, 40, 240, 22), "As soon as you find, come back to me.");
         }
         if (triggered3)
         {
-            GUI.Box(new Rect(10, 460, 100, 22), "We're so close!");
-            GUI.Box(new Rect(10, 480, 160, 22), "Now find six more details.");
-            GUI.Box(new Rect(10, 500, 180, 22), "I will wait for you at the ship.");
+            GUI.Box(new Rect(10, 0, 100, 22), "We're so close!");
+            GUI.Box(new Rect(10, 20, 160, 22), "Now find six more details.");
+            GUI.Box(new Rect(10, 40, 180, 22), "I will wait for you at the ship.");
         }
         if (triggered4)
         {
-            GUI.Box(new Rect(10, 380, 165, 22), "Hooray! You fixed my ship!");
-            GUI.Box(new Rect(10, 400, 100, 22), "Thanks for help!");
-            GUI.Box(new Rect(10, 420, 270, 22), "if you want to start again, jumping in the hole.");
+            GUI.Box(new Rect(10, 80, 165, 22), "Hooray! You fixed my ship!");
+            GUI.Box(new Rect(10, 100, 100, 22), "Thanks for help!");
+            GUI.Box(new Rect(10, 120, 270, 22), "if you want to start again, jumping in the hole.");
         }
 
 

@@ -8,6 +8,10 @@ TagManager:
   - Light
   - bonus2
   - npc
+  - npc2
+  - npc3
+  - npc4
+  - restart
   layers:
   - Default
   - TransparentFX
