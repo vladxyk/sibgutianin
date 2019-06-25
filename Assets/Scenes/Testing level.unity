@@ -220,6 +220,27 @@ MonoBehaviour:
   Speed: 30
   Offset: {x: 0, y: 0, z: 0}
   Target: {fileID: 443899095}
+--- !u!1 &387404206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3808716237683392443, guid: 69f8cb11ab851514f896859f3a6050c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1671795828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &387404212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387404206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d79ef1b3b62e14fa144d78457e53d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  ispause: 0
+  guipause: 0
 --- !u!4 &443899095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3808716237683392441, guid: 69f8cb11ab851514f896859f3a6050c0,
