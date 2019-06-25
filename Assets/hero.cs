@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class hero : MonoBehaviour
 {
@@ -103,7 +104,7 @@ public class hero : MonoBehaviour
             {
                 if ((score == 6) && (bonus.gameObject.tag == "npc"))
                 {
-                    Application.LoadLevel("level2");
+                    SceneManager.LoadScene("level2");
                 }
             }
         }
@@ -122,7 +123,7 @@ public class hero : MonoBehaviour
             {
                 if ((score == 6) && (bonus.gameObject.tag == "npc2"))
                 {
-                    Application.LoadLevel("level3");
+                    SceneManager.LoadScene("level3");
                 }
             }
         }
@@ -157,7 +158,7 @@ public class hero : MonoBehaviour
             {
                 if ((score == 6) && (bonus.gameObject.tag == "restart"))
                 {
-                    Application.LoadLevel("level1");
+                    SceneManager.LoadScene("level1");
                 }
             }
         }
