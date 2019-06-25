@@ -190,7 +190,7 @@ public class hero : MonoBehaviour
         {
             GUI.Box(new Rect(10, 80, 165, 22), "Hooray! You fixed my ship!");
             GUI.Box(new Rect(10, 100, 100, 22), "Thanks for help!");
-            GUI.Box(new Rect(10, 120, 270, 22), "if you want to start again, jump in the hole.");
+            GUI.Box(new Rect(10, 120, 260, 22), "if you want to start again, jump in the hole.");
         }
 
 
